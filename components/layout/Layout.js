@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import MainHeader from './MainHeader'
-const Layout = () => {
+const Layout = (props) => {
   return (
     <Fragment>
       <MainHeader />
