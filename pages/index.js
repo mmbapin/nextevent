@@ -1,14 +1,26 @@
 import React from 'react'
-import { getFeaturedEvents } from '../dummy-data'
+import { getFeaturedEvents } from '../helpers/api-util'
 import EventList from '../components/events/EventList'
+// import EventSearch from "../components/events/EventSearch"
 
-const Home = () => {
-  const featuredEvents = getFeaturedEvents()
+const Home = (props) => {
+  const { events } = props
   return (
     <div>
-      <EventList items={featuredEvents} />
+      {/* <EventSearch /> */}
+      <EventList items={events} />
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const featuredEvents = await getFeaturedEvents();
+  return {
+    props: {
+      events: featuredEvents
+    },
+    revalidate: 300
+  }
 }
 
 export default Home
